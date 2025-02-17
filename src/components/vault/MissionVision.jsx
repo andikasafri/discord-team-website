@@ -52,7 +52,7 @@ export const MissionVision = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="container mx-auto px-4 mb-32">
+    <section ref={sectionRef} className="container mx-auto px-4 mb-32 relative z-10">
       <div className="text-center mb-16">
         <p className="font-general text-sm uppercase text-blue-50/60 mb-4">
           Our Purpose

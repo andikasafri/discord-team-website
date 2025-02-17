@@ -11,8 +11,8 @@ const navItems = [
   { label: "Nexus", path: "/#nexus" },
   { label: "Vault", path: "/vault" },
   { label: "Prologue", path: "/prologue" },
-  { label: "About", path: "/#about" },
-  { label: "Contact", path: "/#contact" },
+  { label: "About", path: "/about" },
+  { label: "Contact", path: "/contact" },
 ];
 
 const NavBar = () => {
