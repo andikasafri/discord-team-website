@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import Button from "./Button";
 
 const navItems = [
-  { label: "Nexus", path: "/#nexus" },
+  { label: "Quincy", path: "/#nexus" },
   { label: "Vault", path: "/vault" },
   { label: "Prologue", path: "/prologue" },
   { label: "About", path: "/about" },

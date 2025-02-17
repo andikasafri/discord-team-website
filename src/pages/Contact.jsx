@@ -7,6 +7,7 @@ import { Background } from "../components/Background";
 import Footer from "../components/Footer";
 import { Mail, MapPin, MessageSquare, Clock } from "lucide-react";
 
+// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const contactInfo = [
@@ -38,7 +39,9 @@ const Contact = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    // Initialize GSAP context
     const ctx = gsap.context(() => {
+      // Animate elements with "fade-in" class
       gsap.from(".fade-in", {
         opacity: 0,
         y: 50,
@@ -48,19 +51,23 @@ const Contact = () => {
           trigger: containerRef.current,
           start: "top center",
           end: "center center",
+          scrub: true, // Use scrub for smoother animations
           toggleActions: "play none none reverse",
         },
       });
+
+      // Refresh ScrollTrigger to handle page reloads
+      ScrollTrigger.refresh();
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => ctx.revert(); // Cleanup GSAP context on unmount
   }, []);
 
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden bg-slate-950">
       <Background />
       <Navbar />
-      
+
       <div ref={containerRef} className="relative z-10 pt-32 pb-32">
         {/* Hero Section */}
         <section className="container mx-auto px-4 text-center mb-20">
@@ -72,7 +79,8 @@ const Contact = () => {
             containerClass="mb-8 !text-blue-50"
           />
           <p className="max-w-2xl mx-auto text-blue-50/80 font-circular-web fade-in">
-            Have questions or want to join our community? We'd love to hear from you!
+            Have questions or want to join our community? We'd love to hear from
+            you!
           </p>
         </section>
 

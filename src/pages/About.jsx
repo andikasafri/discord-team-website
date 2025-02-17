@@ -7,19 +7,22 @@ import { Background } from "../components/Background";
 import Footer from "../components/Footer";
 import { Users, Target, Shield, Trophy } from "lucide-react";
 
+// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const teamMembers = [
   {
     name: "Alex Chen",
     role: "Team Lead",
-    image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&q=80&w=800&h=1000",
+    image:
+      "https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&q=80&w=800&h=1000",
     description: "Veteran player with 5+ years of competitive experience",
   },
   {
     name: "Maya Rahman",
     role: "Community Manager",
-    image: "https://images.unsplash.com/photo-1542327897-d73f4005b533?auto=format&fit=crop&q=80&w=800&h=1000",
+    image:
+      "https://images.unsplash.com/photo-1542327897-d73f4005b533?auto=format&fit=crop&q=80&w=800&h=1000",
     description: "Building bridges in the gaming community since 2020",
   },
 ];
@@ -28,12 +31,14 @@ const values = [
   {
     icon: <Users className="w-6 h-6" />,
     title: "Community First",
-    description: "We prioritize creating an inclusive and welcoming environment for all gamers",
+    description:
+      "We prioritize creating an inclusive and welcoming environment for all gamers",
   },
   {
     icon: <Target className="w-6 h-6" />,
     title: "Skill Development",
-    description: "Focused on helping players improve and reach their full potential",
+    description:
+      "Focused on helping players improve and reach their full potential",
   },
   {
     icon: <Shield className="w-6 h-6" />,
@@ -43,7 +48,8 @@ const values = [
   {
     icon: <Trophy className="w-6 h-6" />,
     title: "Competitive Spirit",
-    description: "Striving for excellence while maintaining a healthy competitive environment",
+    description:
+      "Striving for excellence while maintaining a healthy competitive environment",
   },
 ];
 
@@ -51,7 +57,9 @@ const About = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    // Initialize GSAP context
     const ctx = gsap.context(() => {
+      // Animate elements with "fade-in" class
       gsap.from(".fade-in", {
         opacity: 0,
         y: 50,
@@ -61,19 +69,23 @@ const About = () => {
           trigger: containerRef.current,
           start: "top center",
           end: "center center",
+          scrub: true, // Use scrub for smoother animations
           toggleActions: "play none none reverse",
         },
       });
+
+      // Refresh ScrollTrigger to handle page reloads
+      ScrollTrigger.refresh();
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => ctx.revert(); // Cleanup GSAP context on unmount
   }, []);
 
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden bg-slate-950">
       <Background />
       <Navbar />
-      
+
       <div ref={containerRef} className="relative z-10 pt-32 pb-32">
         {/* Hero Section */}
         <section className="container mx-auto px-4 text-center mb-20">
@@ -85,8 +97,8 @@ const About = () => {
             containerClass="mb-8 !text-blue-50"
           />
           <p className="max-w-2xl mx-auto text-blue-50/80 font-circular-web fade-in">
-            A passionate gaming community dedicated to fostering talent, building
-            friendships, and creating unforgettable gaming experiences.
+            A passionate gaming community dedicated to fostering talent,
+            building friendships, and creating unforgettable gaming experiences.
           </p>
         </section>
 

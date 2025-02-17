@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Button from "./Button"; // Ensure this path matches your file structure
+import Button from "./Button";
 import { TiLocationArrow } from "react-icons/ti";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
@@ -14,9 +14,6 @@ const Hero = () => {
   const [loadedVideos, setLoadedVideos] = useState(0);
 
   const totalVideo = 4;
-
-  // Remove currentVideoRef if it's not used
-  // const currentVideoRef = useRef(null);
   const nextVideoRef = useRef(null);
 
   const handleVideoLoad = () => {
@@ -60,11 +57,6 @@ const Hero = () => {
     { dependencies: [currentIndex], revertOnUpdate: true }
   );
 
-  // Remove these functions if they're not used
-  // const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
-  // const getNextVideoSrc = () => getVideoSrc((currentIndex % totalVideo) + 1);
-  // const getCurrentVideoSrc = () => getVideoSrc(currentIndex);
-
   useEffect(() => {
     if (loadedVideos >= totalVideo) {
       setLoading(false);
@@ -95,7 +87,7 @@ const Hero = () => {
             >
               <video
                 ref={nextVideoRef}
-                src={`videos/hero-${(currentIndex % totalVideo) + 1}.mp4`} // Use inline function
+                src={`videos/hero-${(currentIndex % totalVideo) + 1}.mp4`}
                 loop
                 muted
                 id="current-video"
@@ -107,17 +99,17 @@ const Hero = () => {
 
           <video
             ref={nextVideoRef}
-            src={`videos/hero-${currentIndex}.mp4`} // Use inline function
+            src={`videos/hero-${currentIndex}.mp4`}
             loop
             muted
             id="next-video"
-            className="absolute-center invisible absolute z-20 size-64             object-cover object-center"
+            className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
           />
           <video
             src={`videos/hero-${
               currentIndex === totalVideo - 1 ? 1 : currentIndex
-            }.mp4`} // Use inline function
+            }.mp4`}
             loop
             muted
             className="absolute left-0 top-0 size-full object-cover object-center"
@@ -126,7 +118,7 @@ const Hero = () => {
         </div>
 
         <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-100">
-          G<b>A</b>MING
+          VALO<b>R</b>ANT
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
@@ -135,13 +127,13 @@ const Hero = () => {
               Qui<b>n</b>cy
             </h1>
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              A Chill Gaming Community For <br />
-              Valorant and More
+              Your Premier Valorant Community <br />
+              Where Skills Meet Friendship
             </p>
 
             <Button
               id="watch-trailer"
-              title="Come Check-us"
+              title="Join Discord"
               leftIcon={<TiLocationArrow />}
               containerClass="!bg-yellow-300 flex-center gap-1"
             />
@@ -149,7 +141,7 @@ const Hero = () => {
         </div>
       </div>
       <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-        G<b>A</b>MING
+        VALO<b>R</b>ANT
       </h1>
     </div>
   );

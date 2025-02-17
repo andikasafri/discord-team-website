@@ -4,13 +4,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedTitle from "../AnimatedTitle";
 import { Target, Heart, Users, Trophy } from "lucide-react";
 
+// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const values = [
   {
     icon: <Users className="w-6 h-6" />,
     title: "Community First",
-    description: "Building a welcoming and inclusive gaming environment for all players.",
+    description:
+      "Building a welcoming and inclusive gaming environment for all players.",
   },
   {
     icon: <Trophy className="w-6 h-6" />,
@@ -33,7 +35,9 @@ export const MissionVision = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    // Initialize GSAP context
     const ctx = gsap.context(() => {
+      // Animate elements with "value-card" class
       gsap.from(".value-card", {
         y: 100,
         opacity: 0,
@@ -43,16 +47,24 @@ export const MissionVision = () => {
           trigger: sectionRef.current,
           start: "top center+=100",
           end: "center center",
+          scrub: true, // Use scrub for smoother animations
           toggleActions: "play none none reverse",
         },
       });
+
+      // Refresh ScrollTrigger to handle page reloads
+      ScrollTrigger.refresh();
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => ctx.revert(); // Cleanup GSAP context on unmount
   }, []);
 
   return (
-    <section ref={sectionRef} className="container mx-auto px-4 mb-32 relative z-10">
+    <section
+      ref={sectionRef}
+      className="container mx-auto px-4 mb-32 relative z-10"
+    >
+      {/* Header Section */}
       <div className="text-center mb-16">
         <p className="font-general text-sm uppercase text-blue-50/60 mb-4">
           Our Purpose
@@ -67,6 +79,7 @@ export const MissionVision = () => {
         </p>
       </div>
 
+      {/* Values Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {values.map((value, index) => (
           <div
