@@ -1,24 +1,17 @@
-import Hero from "./components/Hero.jsx";
-import About from "./components/About.jsx";
-import Navbar from "./components/Navbar.jsx";
-import { PlayerCarousel } from "./components/PlayerCarousel.tsx";
-import Features from "./components/Features.jsx";
-import Story from "./components/Story.jsx";
-import Contact from "./components/Contact.jsx";
-import Footer from "./components/Footer.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Vault from "./pages/Vault";
+import Prologue from "./pages/Prologue";
 
 const App = () => {
   return (
-    <main className="relative min-h-screen w-screen overflow-x-hidden">
-      <Navbar />
-      <Hero />
-      <About />
-      <PlayerCarousel />
-      <Features />
-      <Story />
-      <Contact />
-      <Footer />
-    </main>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/vault" element={<Vault />} />
+        <Route path="/prologue" element={<Prologue />} />
+      </Routes>
+    </Router>
   );
 };
 
