@@ -1,6 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  mode: "jit",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  safelist: [
+    // Add any dynamically generated classes here
+    "bg-blue-50",
+    "bg-blue-75",
+    "bg-blue-100",
+    "text-blue-200",
+    "text-blue-300",
+    "bg-violet-300",
+    "bg-yellow-100",
+    "text-yellow-300",
+  ],
   theme: {
     extend: {
       fontFamily: {
